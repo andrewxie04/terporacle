@@ -1,0 +1,533 @@
+/* General Styles - Apple Inspired */
+:root {
+    --background-color: #f5f5f7;
+    --text-color: #1d1d1f;
+    --secondary-text-color: #6e6e73;
+    --accent-color: #007aff; /* Apple Blue */
+    --border-color: #d2d2d7;
+    --card-background: #ffffff;
+    --button-hover-bg: #0071e3;
+    --error-color: #d93025;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: var(--secondary-text-color);
+    font-size: 1.1em;
+}
+
+main {
+    flex-grow: 1;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: var(--secondary-text-color);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Form Styles */
+#analyze-form { /* Renamed form ID */
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input[type="password"],
+.form-group input[type="text"], /* Added text input */
+.form-group select { /* Added select */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #f5f5f7; /* Slightly different background for inputs */
+    color: var(--text-color); /* Ensure text color is set */
+    font-family: inherit; /* Inherit font */
+}
+
+/* Specific style for select dropdown arrow */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236e6e73%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.6-3.6%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px 10px;
+    padding-right: 30px; /* Make space for the arrow */
+}
+
+.form-group input[type="password"]:focus,
+.form-group input[type="text"]:focus, /* Added text input */
+.form-group select:focus { /* Added select */
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: var(--secondary-text-color);
+}
+
+/* Input Method Selector */
+.input-method-selector > div {
+    display: inline-block; /* Place radio buttons side-by-side */
+    margin-right: 20px;
+}
+.input-method-selector input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--accent-color); /* Style the radio button itself */
+}
+.input-method-selector label { /* Style labels next to radio buttons */
+    display: inline; /* Keep label on same line */
+    margin-bottom: 0;
+    font-weight: normal; /* Normal weight for radio labels */
+}
+
+/* Hide/Show Sections */
+.input-section {
+    margin-top: 20px; /* Add some space above the input sections */
+}
+
+/* Reinstated File Upload Area Styles */
+.file-upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    position: relative; /* Needed for absolute positioning of input */
+}
+
+.file-upload-area:hover {
+    border-color: var(--accent-color);
+    background-color: #f0f8ff; /* Light blue background on hover */
+}
+
+.file-upload-area input[type="file"] {
+    /* Hide the default file input but keep it accessible */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1; /* Ensure it's clickable */
+}
+
+.file-upload-area .file-label {
+    display: block; /* Make label take full area */
+    width: 100%;
+    height: 100%;
+    margin: 0; /* Reset margin */
+    cursor: pointer;
+}
+
+.file-upload-area .file-label span {
+    color: var(--accent-color);
+    font-weight: 500;
+    pointer-events: none; /* Prevent span from blocking input click */
+}
+
+
+/* Manual Course Input Styles */
+#manual-input-section {
+    border: none; /* Remove border from fieldset */
+    padding: 0; /* Remove padding from fieldset */
+    margin-top: 15px; /* Adjust top margin */
+    margin-bottom: 25px; /* Add space below the manual input section */
+}
+
+#manual-input-section legend {
+    font-weight: 500;
+    padding: 0;
+    margin-left: 0;
+    color: var(--secondary-text-color);
+    font-size: 1em;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+#course-list {
+    margin-bottom: 15px;
+}
+
+.course-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.course-input-row input[type="text"] {
+    flex-grow: 1;
+    min-width: 80px;
+    padding: 10px 12px;
+    font-size: 0.95em;
+    background-color: var(--card-background);
+    border: 1px solid #ccc; /* Use a specific color, not var(--border-color) */
+    border-radius: 6px; /* Slightly smaller radius for inputs */
+}
+
+.course-input-row .course-id {
+    flex-basis: 60%; /* Give more space to course ID */
+}
+.course-input-row .course-section {
+    flex-basis: 30%;
+}
+
+/* General Button Style for Add/Remove */
+.remove-course-button,
+#add-course-button {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+/* Specific Remove Button Style */
+.remove-course-button {
+    background-color: #ffe1e1;
+    color: #d93025;
+    flex-shrink: 0;
+}
+
+.remove-course-button:disabled {
+    background-color: #f0f0f0;
+    color: #b0b0b0;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+.remove-course-button:hover:not(:disabled) {
+    background-color: #ffc1c1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Specific Add Button Style */
+#add-course-button {
+    background-color: #e5e5ea; /* Light grey background */
+    color: var(--accent-color); /* Blue text */
+    display: inline-block;
+    width: auto;
+    margin-top: 0; /* Remove top margin, handled by #course-list */
+}
+
+#add-course-button:hover {
+    background-color: #dcdce0; /* Slightly darker grey on hover */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Button Styles */
+button[type="submit"] {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-hover-bg);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+button[type="submit"]:disabled {
+    background-color: #a1a1a6;
+    cursor: not-allowed;
+}
+
+
+/* Loading Indicator */
+#loading-indicator {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: var(--accent-color);
+    margin: 0 auto 15px auto;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-indicator p {
+    color: var(--secondary-text-color);
+    font-weight: 500;
+}
+
+/* Results and Error Area */
+#results-area, #error-area {
+    background-color: var(--card-background);
+    padding: 25px 30px; /* Increased padding */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+    position: relative; /* Needed for absolute positioning if desired, or just general layout */
+}
+
+/* Overall Grade Display Styles - Enhanced */
+#overall-grade-display {
+    /* Gradient background */
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    padding: 20px 30px; /* Increased padding */
+    border-radius: 12px; /* Match other cards */
+    margin-bottom: 30px; /* Increased space */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 100, 255, 0.25); /* Softer shadow */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+}
+
+#overall-grade-display .grade-label {
+    font-size: 1em; /* Slightly smaller label */
+    font-weight: 400; /* Lighter weight */
+    margin-bottom: 5px; /* Space between label and value */
+    opacity: 0.85;
+    text-transform: uppercase; /* Uppercase label */
+    letter-spacing: 0.5px; /* Add letter spacing */
+}
+
+#overall-grade-display .grade-value {
+    font-size: 3em; /* Larger grade value */
+    font-weight: 700; /* Bolder */
+    line-height: 1;
+    margin: 0; /* Remove default margins */
+}
+
+#overall-grade-display .grade-total {
+    font-size: 1em; /* Match label size */
+    font-weight: 400; /* Match label weight */
+    opacity: 0.8;
+    margin-left: 3px; /* Adjust spacing */
+}
+
+#results-area h2, #error-area h2, #results-area h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    color: var(--text-color);
+}
+
+#results-area h3 {
+    font-size: 1.2em;
+    margin-top: 25px; /* Space between sections */
+    margin-bottom: 10px;
+    border-bottom: none; /* Remove border from h3 */
+    padding-bottom: 5px;
+}
+
+#error-area h2 {
+    color: var(--error-color);
+    border-bottom-color: var(--error-color);
+}
+
+#overall-analysis-content, #error-output {
+    white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+    word-wrap: break-word; /* Break long words */
+    font-family: var(--font-family); /* Use standard font for overall */
+    font-size: 1em; /* Standard font size */
+    background-color: #f5f5f7;
+    padding: 15px;
+    border-radius: 8px;
+    /* max-height: 60vh; */ /* Remove max height for overall */
+    /* overflow-y: auto; */
+    line-height: 1.7; /* Slightly more line spacing */
+}
+
+/* Style for bold text within overall analysis (scores) */
+#overall-analysis-content strong {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Individual Course Card Styles - Enhanced */
+#individual-courses-content {
+    display: grid;
+    gap: 25px; /* Increased gap */
+}
+
+.course-card {
+    background-color: var(--card-background); /* Use white background */
+    background-color: #f5f5f7;
+    border: 1px solid #e1e1e1; /* Lighter border */
+    border-radius: 12px; /* Match form radius */
+    padding: 25px; /* Increased padding */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.04); /* Slightly more shadow */
+    transition: box-shadow 0.2s ease-in-out; /* Add hover effect */
+}
+
+.course-card:hover {
+     box-shadow: 0 6px 16px rgba(0,0,0,0.06); /* Enhance shadow on hover */
+}
+
+
+.course-card h4 {
+    margin-top: 0;
+    margin-bottom: 12px; /* More space below title */
+    font-size: 1.15em; /* Slightly larger title */
+    font-weight: 600;
+    color: var(--text-color); /* Use main text color for title */
+    border-bottom: 1px solid var(--border-color); /* Use consistent border color */
+    padding-bottom: 10px; /* Adjust padding */
+}
+
+/* Removed unused .course-card p style */
+
+.course-card .course-meta {
+    font-size: 0.9em;
+    color: var(--secondary-text-color);
+    margin-bottom: 18px; /* More space below meta */
+    line-height: 1.5; /* Improve readability */
+}
+.course-card .course-meta span {
+    display: inline-block; /* Keep inline-block */
+    margin-right: 18px; /* Slightly more space */
+    white-space: nowrap; /* Prevent wrapping within a meta item */
+}
+.course-card .course-meta strong {
+    color: var(--text-color);
+    font-weight: 500; /* Ensure consistent weight */
+}
+.course-card .course-meta i { /* Style the research depth text */
+    display: block; /* Put research depth on its own line */
+    margin-top: 8px; /* Space above research depth */
+    font-style: normal; /* Remove italics if desired, or keep */
+    color: #888; /* Lighter color for less emphasis */
+}
+
+
+.course-card .analysis-summary {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.95em;
+    line-height: 1.65; /* Slightly more line spacing */
+    color: var(--text-color);
+    margin-top: 15px; /* Add space above summary */
+    padding-top: 15px; /* Add space */
+    border-top: 1px dashed var(--border-color); /* Separator line */
+}
+
+.course-card .analysis-summary strong {
+     font-weight: 600;
+     /* Optional: Add background/color to highlight scores */
+     /* background-color: #e0f2ff; */
+     /* padding: 1px 4px; */
+     /* border-radius: 4px; */
+}
+
+#error-output {
+    color: var(--error-color);
+    background-color: #fce8e6; /* Light red background for errors */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    main {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    #analyze-form { /* Renamed form ID */
+        padding: 20px;
+    }
+}

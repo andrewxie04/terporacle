@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+env/
+venv/
+ENV/
+env.bak
+venv.bak
+
+# Flask uploads
+schedule-frontend/uploads/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.vscode/
+.idea/

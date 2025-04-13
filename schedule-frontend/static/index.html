@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMD Schedule Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
+</head>
+<body>
+    <header>
+        <h1>UMD Schedule Analyzer</h1>
+        <p>Upload an image or enter courses manually for an AI-powered analysis.</p>
+    </header>
+
+    <main>
+        <form id="analyze-form">
+            <!-- Common Fields -->
+            <div class="form-group">
+                <label for="api-key">Gemini API Key:</label>
+                <input type="password" id="api-key" name="apiKey" placeholder="Enter your Gemini API Key" required>
+                <small>Needed for analysis. Get your key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a> (click "Create API key"). Key is sent securely.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="term-select">Select Term:</label>
+                <select id="term-select" name="termId" required>
+                    <option value="202508">Fall 2025</option>
+                    <option value="202506">Summer 2025</option>
+                    <option value="202501">Spring 2025</option>
+                    <option value="202408">Fall 2024</option>
+                    <option value="202406">Summer 2024</option>
+                    <option value="202401">Spring 2024</option>
+                    <option value="202308">Fall 2023</option>
+                    <!-- Add more terms as needed -->
+                </select>
+            </div>
+
+            <!-- Input Method Selection -->
+            <div class="form-group input-method-selector">
+                <label>Input Method:</label>
+                <div>
+                    <input type="radio" id="input-method-image" name="inputMethod" value="image" checked>
+                    <label for="input-method-image">Upload Image</label>
+                </div>
+                <div>
+                    <input type="radio" id="input-method-manual" name="inputMethod" value="manual">
+                    <label for="input-method-manual">Enter Manually</label>
+                </div>
+            </div>
+
+            <!-- Image Upload Section (Initially Visible) -->
+            <div id="image-upload-section" class="input-section">
+                <div class="form-group file-upload-area">
+                     <label for="schedule-image" class="file-label">
+                        <span id="file-name">Click or drag to upload schedule image</span>
+                     </label>
+                    <input type="file" id="schedule-image" name="scheduleImage" accept="image/png, image/jpeg, image/gif, image/webp">
+                    <!-- 'required' attribute will be handled by JS based on selection -->
+                </div>
+            </div>
+
+            <!-- Manual Input Section (Initially Hidden) -->
+            <fieldset id="manual-input-section" class="input-section" style="display: none;">
+                <legend>Enter Courses Manually</legend>
+                <div id="course-list">
+                    <!-- Course input rows will be added here by JS -->
+                </div>
+                <button type="button" id="add-course-button">Add Another Course</button>
+            </fieldset>
+
+            <button type="submit" id="analyze-button">Analyze Schedule</button>
+        </form>
+
+        <div id="loading-indicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your schedule... This may take a minute.</p>
+        </div>
+
+        <!-- Results Area (Remains the same) -->
+        <div id="results-area" style="display: none;">
+            <h2>Analysis Results</h2>
+            <!-- Overall Grade Display -->
+            <div id="overall-grade-display" style="display: none;">
+                 <span class="grade-label">Overall Grade:</span>
+                 <span class="grade-value">--</span><span class="grade-total">/100</span>
+            </div>
+            <div id="overall-analysis-container">
+                <h3>Overall Schedule Analysis</h3>
+                <div id="overall-analysis-content"></div>
+            </div>
+            <div id="individual-courses-container">
+                <h3>Individual Course Analyses</h3>
+                <div id="individual-courses-content">
+                    <!-- Individual course cards will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="error-area" style="display: none;">
+            <h2>Error</h2>
+            <pre id="error-output"></pre>
+        </div>
+    </main>
+
+    <footer>
+        <p>Powered by Python, Flask, and Gemini</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
